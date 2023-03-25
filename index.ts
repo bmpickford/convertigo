@@ -2,20 +2,21 @@ import { init } from "./app";
 import { DynamoDBDAO, JSONLDAO } from "./db";
 import { config } from "dotenv";
 import { DAO } from "./db/DAO";
+import { SQLiteAdapter } from "./db/SQLite";
 
-config()
+config();
 
-const use_dynamo = process.env.OUTPUT === 'dynamodb';
+const use_dynamo = process.env.OUTPUT === "dynamodb";
 const dynamo_table_name = process.env.DYNAMO_TABLE_NAME;
 const dynamo_region = process.env.DYNAMO_REGION;
 
-let db: DAO = new JSONLDAO();
+let db: DAO = new SQLiteAdapter("./data/events.db");
 
 if (use_dynamo) {
   if (!dynamo_table_name) {
-  throw new Error("DynamoDB table name must be provided");
+    throw new Error("DynamoDB table name must be provided");
   }
-  
+
   if (!dynamo_region) {
     throw new Error("DynamoDB region must be provided");
   }

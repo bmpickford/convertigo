@@ -12,8 +12,8 @@ export class DynamoDBDAO implements DAO {
 
   async save(event: EventWithTimestampAndID): Promise<void> {
     const item = {
-      pk: { S: `user#${event.user}` },
-      sk: { S: `type#${event.type}#event#${event.id}` },
+      pk: { S: `type#${event.type}` },
+      sk: { S: `user#${event.user}#event#${event.id}` },
       eventType: { S: event.type },
       eventData: { S: JSON.stringify(event) },
       createdAt: { N: event.timestamp.toString() },
