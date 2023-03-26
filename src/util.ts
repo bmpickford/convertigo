@@ -8,7 +8,7 @@ import {
   addToCartEvent,
   conversionEvent,
   AnyEvent,
-} from "./types";
+} from "./types.js";
 
 export const getParsedBody = (body: any): AnyEvent | null => {
   if (isSearchEvent(body)) {

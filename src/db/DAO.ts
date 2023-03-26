@@ -1,4 +1,4 @@
-import { AnyEvent } from "../types";
+import { AnyEvent } from "../types.js";
 
 export type EventWithTimestampAndID = AnyEvent & {
   timestamp: number;

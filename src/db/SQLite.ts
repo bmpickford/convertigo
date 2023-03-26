@@ -1,6 +1,6 @@
 import sqlite3 from "sqlite3";
-import { isSearchEvent } from "../types";
-import { DAO, EventWithTimestampAndID } from "./DAO";
+import { isSearchEvent } from "../types.js";
+import { DAO, EventWithTimestampAndID } from "./DAO.js";
 
 export class SQLiteAdapter implements DAO {
   private db: sqlite3.Database;

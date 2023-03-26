@@ -1,7 +1,7 @@
 import fs from "fs";
-import { DAO, EventWithTimestampAndID } from "./DAO";
+import { DAO, EventWithTimestampAndID } from "./DAO.js";
 
-export class JSONLDAO implements DAO {
+export class JSONLAdapter implements DAO {
   private writeStream: fs.WriteStream;
 
   constructor(filename = new Date().toISOString() + ".jsonl") {

@@ -22,23 +22,7 @@ All events require these params:
 
 ## Data persistence
 
-By default it will output to sqlite, but a dynamodb adapter is also available. You can setting this environment variable `OUTPUT=dynamodb`. To create your own, extend the interface in `db/DAO.ts` and initialise it in `index.ts`
-
-### Using DynamoDB
-
-To use dynamo you will need to set the table name and region in the environment variables. See `.env.example` for a reference.
-
-The persisted structure for the dynamo entry uses single table design, and looks like this:
-
-```json
-{
-  "pk": { "S": "type#EVENT_TYPE" },
-  "sk": { "S": "user#USER_ID#event#EVENT_ID" },
-  "eventType": { "S": "EVENT_TYPE" },
-  "eventData": { "S": "EVENT_JSON_BLOB" },
-  "createdAt": { "N": "UTC_MS_TIME" }
-}
-```
+By default it will output to a jsonl file, but a clickhouse adapter is also available. You can setting this environment variable `OUTPUT=clickhouse`. To create your own, extend the interface in `db/DAO.ts` and initialise it in `index.ts`
 
 ## TODO
 

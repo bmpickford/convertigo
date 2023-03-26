@@ -8,7 +8,7 @@ const items = 1000;
 const pSearch = 0.8;
 const pView = 0.8;
 const pAdd = 0.3;
-const pConvert = 0.2;
+const pConvert = 0.6;
 const searches = [
   "Women's clothing sale",
   "Men's shoes clearance",
@@ -68,7 +68,7 @@ for (const u in new Array(users).fill(0)) {
   const view = Math.random() < pView;
   const add = Math.random() < pAdd;
   const convert = Math.random() < pConvert;
-  const item_id = Math.floor(Math.random() * items) + 1;
+  const item_id = (Math.floor(Math.random() * items) + 1).toString();
 
   if (search) {
     const event = {
@@ -104,18 +104,18 @@ for (const u in new Array(users).fill(0)) {
     };
     stream.write(JSON.stringify(event));
     stream.write("\n");
-  }
 
-  if (convert) {
-    const event = {
-      type: "conversion",
-      id: v4(),
-      user,
-      timestamp: new Date().getTime(),
-      item_id,
-    };
-    stream.write(JSON.stringify(event));
-    stream.write("\n");
+    if (convert) {
+      const event = {
+        type: "conversion",
+        id: v4(),
+        user,
+        timestamp: new Date().getTime(),
+        item_id,
+      };
+      stream.write(JSON.stringify(event));
+      stream.write("\n");
+    }
   }
 }
 

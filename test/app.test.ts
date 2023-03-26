@@ -1,6 +1,6 @@
 import { it, before, after, describe } from "node:test";
 import supertest from "supertest";
-import { init } from "../app";
+import { init } from "../src/app";
 
 const app = init();
 

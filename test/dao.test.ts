@@ -1,6 +1,6 @@
 import { it, before, after, afterEach } from "node:test";
 import supertest from "supertest";
-import { init } from "../app";
+import { init } from "../src/app";
 import sinon from "sinon";
 
 const TestDB = {
@@ -29,6 +29,12 @@ it("should call save on a successful event", async () => {
     .expect(200);
 
   sinon.assert.calledOnce(TestDB.save);
+});
+
+it("should not call save when an event is invalid", async () => {
+  await supertest(app).post("/event").send({ type: "not_valid" }).expect(400);
+
+  sinon.assert.notCalled(TestDB.save);
 });
 
 it("should have a timestamp and id", async () => {
