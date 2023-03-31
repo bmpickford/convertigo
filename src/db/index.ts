@@ -1,3 +1,2 @@
-export { JSONLAdapter } from "./JSONL.js";
-export { Noop } from "./Noop.js";
-export { ClickhouseAdapter } from "./Clickhouse.js";
+export { Noop } from "./dao.js";
+export { ClickhouseAdapter } from "./clickhouse.js";

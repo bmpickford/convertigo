@@ -1,4 +1,5 @@
 import * as zod from "zod";
+import { EventTable } from "./db/dao.js";
 
 export const validEvents = [
   "search",
@@ -51,3 +52,12 @@ export const isAddToCartEvent = (event: Event): event is AddToCartEvent =>
   event.type === "add_to_cart";
 export const isConversionEvent = (event: Event): event is ConversionEvent =>
   event.type === "conversion";
+
+export const searchesQueryParams = zod.object({
+  start_date: zod.string().datetime(),
+  end_date: zod.string().datetime(),
+});
+
+export interface SearchResponse {
+  searches: EventTable[];
+}

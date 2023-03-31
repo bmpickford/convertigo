@@ -24,7 +24,6 @@ services:
       - clickhouse
     environment:
       - PORT=9000
-      - OUTPUT=clickhouse
       - CLICKHOUSE_HOST=clickhouse
       - CLICKHOUSE_PORT=8123
     networks:
