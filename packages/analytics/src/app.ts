@@ -1,6 +1,6 @@
 import express from "express";
 import * as zod from "zod";
-import { AnyEvent, searchesQueryParams, SearchResponse } from "./types.js";
+import { AnyEvent } from "./types.js";
 import { v4 } from "uuid";
 import { Noop } from "./db/index.js";
 import { errorHandlingMiddleware, loggingMiddleware } from "./middleware.js";
@@ -40,25 +40,6 @@ export const init = (db = new Noop()) => {
           timestamp: new Date().getTime(),
         });
         res.send({ status: "ok" });
-      } catch (err) {
-        next(err);
-      }
-    }
-  );
-
-  app.get<"/searches", never, SearchResponse, never>(
-    "/searches",
-    async (req, res, next) => {
-      try {
-        console.log(req.query);
-        if (req.query.start_date && req.query.end_date) {
-          const { start_date, end_date } = searchesQueryParams.parse(req.query);
-          const searches = await db.getSearches();
-          res.send({ searches });
-        } else {
-          const searches = await db.getSearches();
-          res.send({ searches });
-        }
       } catch (err) {
         next(err);
       }

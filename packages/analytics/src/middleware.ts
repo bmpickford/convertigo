@@ -26,7 +26,6 @@ export const errorHandlingMiddleware = (
   res: any,
   next: any
 ) => {
-  console.log("IN ERROR HANDLINE MIDDLEWARE");
   if (err instanceof zod.ZodError) {
     return res.status(400).send({ status: "error", issues: err.issues });
   }

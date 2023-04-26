@@ -1,5 +1,6 @@
 import fs from "fs";
 import { v4 } from "uuid";
+
 const stream = fs.createWriteStream("data.jsonl");
 
 const users = 500;

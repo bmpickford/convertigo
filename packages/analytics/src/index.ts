@@ -9,7 +9,6 @@ const abortController = new AbortController();
 const db: DAO = new ClickhouseAdapter(
   process.env.CLICKHOUSE_HOST,
   process.env.CLICKHOUSE_PORT,
-  abortController
 );
 
 const port = process.env.PORT || 9000;

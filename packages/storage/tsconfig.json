@@ -8,5 +8,4 @@
     "skipLibCheck": true,
     "outDir": "dist"
   },
-  "include": ["./src/**/*.ts"]
 }
